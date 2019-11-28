@@ -1,0 +1,385 @@
+swagger: "2.0"
+info:
+  title: codeschool-workshop
+  version: 0.0.2
+host: code-school-workshop.ir-e1.cloudhub.io
+basePath: /api/
+schemes:
+  - http
+paths:
+  /user:
+    get:
+      description: ""
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: Successful response!!!
+          x-amf-mediaType: application/json
+          schema:
+            type: object
+            additionalProperties: true
+            required:
+              - userList
+            properties:
+              userList:
+                x-amf-examples:
+                  example_0:
+                    -
+                      _id: 5dd8031253e8d663cb4121b2
+                      surname: Kagkas
+                      name: George
+                      project: Bata
+                      team: Cloud Eng
+                      email: gkagkas@deloitte.gr
+                  example_1:
+                    -
+                      name: John
+                      surname: Sakellion
+                      project: teamProject
+                      team: testTeam
+                      email: test@test.com
+                  example_2:
+                    -
+                      name: John
+                      surname: Sakellion
+                      project: teamProject
+                      team: testTeam
+                      email: test@test.com
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+                  required:
+                    - email
+                    - name
+                    - surname
+                    - team
+                    - project
+                  properties:
+                    email:
+                      type: string
+                    name:
+                      type: string
+                    surname:
+                      type: string
+                    team:
+                      type: string
+                    project:
+                      type: string
+      security: []
+    post:
+      description: Create a new user
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        -
+          x-amf-mediaType: application/json
+          in: body
+          name: generated
+          schema:
+            x-amf-examples:
+              example_0:
+                -
+                  _id: 5dd8031253e8d663cb4121b2
+                  surname: Kagkas
+                  name: George
+                  project: Bata
+                  team: Cloud Eng
+                  email: gkagkas@deloitte.gr
+              example_1:
+                -
+                  name: John
+                  surname: Sakellion
+                  project: teamProject
+                  team: testTeam
+                  email: test@test.com
+              example_2:
+                -
+                  name: John
+                  surname: Sakellion
+                  project: teamProject
+                  team: testTeam
+                  email: test@test.com
+            type: array
+            items:
+              type: object
+              additionalProperties: true
+              required:
+                - email
+                - name
+                - surname
+                - team
+                - project
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                surname:
+                  type: string
+                team:
+                  type: string
+                project:
+                  type: string
+      responses:
+        "201":
+          description: Successful response!!!
+          x-amf-mediaType: application/json
+          schema:
+            x-amf-examples:
+              example_0:
+                -
+                  _id: 5dd8031253e8d663cb4121b2
+                  surname: Kagkas
+                  name: George
+                  project: Bata
+                  team: Cloud Eng
+                  email: gkagkas@deloitte.gr
+              example_1:
+                -
+                  name: John
+                  surname: Sakellion
+                  project: teamProject
+                  team: testTeam
+                  email: test@test.com
+              example_2:
+                -
+                  name: John
+                  surname: Sakellion
+                  project: teamProject
+                  team: testTeam
+                  email: test@test.com
+            type: array
+            items:
+              type: object
+              additionalProperties: true
+              required:
+                - email
+                - name
+                - surname
+                - team
+                - project
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                surname:
+                  type: string
+                team:
+                  type: string
+                project:
+                  type: string
+        "404":
+          description: ""
+          x-amf-mediaType: application/json
+          schema:
+            example:
+              message: Not found
+              code: 1001
+            type: object
+            additionalProperties: true
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+              message:
+                type: string
+      security: []
+  /user/{id}:
+    get:
+      description: Get a user by id
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        -
+          name: id
+          required: true
+          in: path
+          type: string
+      responses:
+        "200":
+          description: ""
+          x-amf-mediaType: application/json
+          schema:
+            x-amf-examples:
+              example_0:
+                -
+                  _id: 5dd8031253e8d663cb4121b2
+                  surname: Kagkas
+                  name: George
+                  project: Bata
+                  team: Cloud Eng
+                  email: gkagkas@deloitte.gr
+              example_1:
+                -
+                  name: John
+                  surname: Sakellion
+                  project: teamProject
+                  team: testTeam
+                  email: test@test.com
+              example_2:
+                -
+                  name: John
+                  surname: Sakellion
+                  project: teamProject
+                  team: testTeam
+                  email: test@test.com
+            type: array
+            items:
+              type: object
+              additionalProperties: true
+              required:
+                - email
+                - name
+                - surname
+                - team
+                - project
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                surname:
+                  type: string
+                team:
+                  type: string
+                project:
+                  type: string
+        "404":
+          description: ""
+          x-amf-mediaType: application/json
+          schema:
+            example:
+              message: Not found
+              code: 1001
+            type: object
+            additionalProperties: true
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+              message:
+                type: string
+      security: []
+    put:
+      description: Update user by id
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        -
+          name: id
+          required: true
+          in: path
+          type: string
+      responses:
+        "200":
+          description: ""
+          x-amf-mediaType: application/json
+          schema:
+            x-amf-examples:
+              example_0:
+                -
+                  _id: 5dd8031253e8d663cb4121b2
+                  surname: Kagkas
+                  name: George
+                  project: Bata
+                  team: Cloud Eng
+                  email: gkagkas@deloitte.gr
+              example_1:
+                -
+                  name: John
+                  surname: Sakellion
+                  project: teamProject
+                  team: testTeam
+                  email: test@test.com
+              example_2:
+                -
+                  name: John
+                  surname: Sakellion
+                  project: teamProject
+                  team: testTeam
+                  email: test@test.com
+            type: array
+            items:
+              type: object
+              additionalProperties: true
+              required:
+                - email
+                - name
+                - surname
+                - team
+                - project
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+                surname:
+                  type: string
+                team:
+                  type: string
+                project:
+                  type: string
+        "404":
+          description: ""
+          x-amf-mediaType: application/json
+          schema:
+            example:
+              message: Not found
+              code: 1001
+            type: object
+            additionalProperties: true
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+              message:
+                type: string
+      security: []
+    delete:
+      description: ""
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        -
+          name: id
+          required: true
+          in: path
+          type: string
+      responses:
+        "204":
+          description: ""
+        "404":
+          description: ""
+          x-amf-mediaType: application/json
+          schema:
+            example:
+              message: Not found
+              code: 1001
+            type: object
+            additionalProperties: true
+            required:
+              - code
+              - message
+            properties:
+              code:
+                type: integer
+              message:
+                type: string
+      security: []

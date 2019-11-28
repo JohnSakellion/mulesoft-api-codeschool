@@ -1,0 +1,92 @@
+#%RAML 1.0
+version: 0.0.2
+title: codeschool-workshop
+baseUri: http://code-school-workshop.ir-e1.cloudhub.io/api/
+mediaType: 
+  - application/json
+
+types:
+  Error:
+    properties:
+      code: integer
+      message: string
+  userType: 
+    type: array
+    items:
+      properties:
+        email: string
+        name: string
+        surname: string
+        team: string
+        project: string
+
+/user:
+  get:
+    description: 
+    responses:
+      200:
+        description: Successful response!!!
+        body: 
+          application/json:
+            properties:
+              userList:
+                type: userType
+                example: [{"_id": "5dd8031253e8d663cb4121b2",
+"surname": "Kagkas",
+"name": "George",
+"project": "Bata",
+"team": "Cloud Eng",
+"email": "gkagkas@deloitte.gr"
+}]
+  post: 
+    description: Create a new user
+    body:
+      application/json:
+        type: userType
+        example: [{"name" : "John", "surname" : "Sakellion", "project" : "teamProject", "team" : "testTeam", "email" : "test@test.com"}]
+    responses:
+      201:
+        description: Successful response!!!
+        body:
+          application/json:
+            type: userType
+            example: [{"name" : "John", "surname" : "Sakellion", "project" : "teamProject", "team" : "testTeam", "email" : "test@test.com"}]
+      404:
+        body:
+          application/json:
+            type: Error
+            example: { "message" : "Not found", "code" : 1001 }
+
+  /{id}:       
+    get:
+      description: Get a user by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: userType
+        404:
+          body:
+            application/json:
+              type: Error
+    put:
+      description: Update user by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: userType
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Not found", "code" : 1001 }     
+    delete:  
+      description:
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Not found", "code" : 1001 }
